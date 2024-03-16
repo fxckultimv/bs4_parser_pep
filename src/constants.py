@@ -17,3 +17,12 @@ EXPECTED_STATUS = {
     'W': ('Withdrawn',),
     '': ('Draft', 'Active'),
 }
+
+ERROR_MESSAGE = (
+    '\nНесовпадающие статусы:'
+    '\n{pep_url}'
+    '\nСтатус в карточке:'
+    '\n{status}'
+    '\nОжидаемые статусы:'
+    '\n{expected_status}'
+)
