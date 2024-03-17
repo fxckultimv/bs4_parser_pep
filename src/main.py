@@ -44,22 +44,20 @@ def whats_new(session):
     results = [HEADER_WHATS_NEW]
     messages_error = []
 
-    def process_version_link(a_tag):
-        version_link = urljoin(whats_new_url, a_tag["href"])
+    for a_tag in tqdm(a_tags): 
+        version_link = urljoin(whats_new_url, a_tag["href"]) 
         try:
-            soup = get_soup(session, version_link)
-        except ConnectionError as error:
-            messages_error.append(CHECK_URL.format(error=error))
-            return None
-        return (
-            version_link,
-            find_tag(soup, "h1").text,
-            find_tag(soup, "dl").text.replace("\n", ""),
+            soup = get_soup(session, version_link) 
+        except ConnectionError as error: 
+            messages_error.append(CHECK_URL.format(error=error)) 
+            continue
+        results.append(
+            (
+                version_link, 
+                find_tag(soup, "h1").text, 
+                find_tag(soup, "dl").text.replace("\n", ""), 
+            )
         )
-
-    results.extend(filter(None, (
-        process_version_link(a_tag) for a_tag in tqdm(a_tags)
-    )))
 
     list(map(logging.error, messages_error))
 

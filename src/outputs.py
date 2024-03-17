@@ -6,18 +6,8 @@ from prettytable import PrettyTable
 
 from constants import (
   BASE_DIR, DATETIME_FORMAT, RESULTS_DIR,
-  DOWNLOAD_RESULT, FILE_FORMAT, OUTPUT_PRETTY,
-  OUTPUT_FILE, OUTPUT_DEFAULT
+  DOWNLOAD_RESULT, FILE_FORMAT, OUTPUT_FILE, OUTPUT_PRETTY
 )
-
-
-def control_output(results, cli_args):
-    output_functions = {
-        OUTPUT_PRETTY: pretty_output,
-        OUTPUT_FILE: file_output,
-        OUTPUT_DEFAULT: default_output
-    }
-    output_functions[cli_args.output](results, cli_args)
 
 
 def default_output(results, cli_args=''):
@@ -45,3 +35,14 @@ def file_output(results, cli_args):
             file, dialect=csv.unix_dialect
         ).writerows(results)
     logging.info(DOWNLOAD_RESULT.format(path=file_path))
+
+
+OUTPUT_FUNCTIONS = {
+        OUTPUT_PRETTY: pretty_output,
+        OUTPUT_FILE: file_output,
+        None: default_output
+    }
+
+
+def control_output(results, cli_args):
+    OUTPUT_FUNCTIONS[cli_args.output](results, cli_args)
