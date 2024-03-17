@@ -17,10 +17,11 @@ DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
 FILE_FORMAT = 'csv'
 
 # Режимы работы и открытия файлов
-PRETTY_OUTPUT_MODE = 'pretty'
-FILE_OUTPUT_MODE = 'file'
 MODE_DOWNLOAD = 'wb'
 MODE_OPEN_FILE = 'w'
+OUTPUT_PRETTY = 'pretty'
+OUTPUT_FILE = 'file'
+OUTPUT_DEFAULT = None
 
 # Сообщения и тексты
 CHECK_URL = 'При загрузке {url} возникла ошибка!'

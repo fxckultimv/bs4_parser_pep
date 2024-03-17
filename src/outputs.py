@@ -6,18 +6,18 @@ from prettytable import PrettyTable
 
 from constants import (
   BASE_DIR, DATETIME_FORMAT, RESULTS_DIR,
-  DOWNLOAD_RESULT, FILE_FORMAT
+  DOWNLOAD_RESULT, FILE_FORMAT, OUTPUT_PRETTY,
+  OUTPUT_FILE, OUTPUT_DEFAULT
 )
 
 
 def control_output(results, cli_args):
-    output = cli_args.output
     output_functions = {
-        'pretty': pretty_output,
-        'file': file_output,
+        OUTPUT_PRETTY: pretty_output,
+        OUTPUT_FILE: file_output,
+        OUTPUT_DEFAULT: default_output
     }
-    output_function = output_functions.get(output, default_output)
-    output_function(results, cli_args)
+    output_functions[cli_args.output](results, cli_args)
 
 
 def default_output(results):
