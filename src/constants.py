@@ -39,4 +39,3 @@ ERROR_PEP_STATUS = (
     '\nОжидаемые статусы:'
     '\n{expected_status}'
 )
-
