@@ -23,6 +23,3 @@ def get_response(session, url, encode=CODE_PAGES):
 
 def get_soup(session, url, feature='lxml'):
     return BeautifulSoup(get_response(session, url).text, feature)
-
-
-

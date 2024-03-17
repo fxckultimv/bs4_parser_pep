@@ -6,6 +6,8 @@ LOG_DIR = BASE_DIR / 'logs'
 LOG_FILE = LOG_DIR / 'parser.log'
 DOWNLOAD_DIR = 'downloads'
 RESULTS_DIR = 'results'
+PATH_NAME_WHATS_NEW = 'whatsnew/'
+PAGE_NAME_DOWNLOAD = 'download.html'
 
 # Форматы и настройки логирования
 LOG_FORMAT = '"%(asctime)s - [%(levelname)s] - %(message)s"'
