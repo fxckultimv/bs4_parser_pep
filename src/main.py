@@ -2,6 +2,7 @@ import logging
 import re
 from collections import Counter
 from urllib.parse import urljoin
+from exceptions import ParserFindTagException
 
 import requests_cache
 from tqdm import tqdm
@@ -42,36 +43,41 @@ def whats_new(session):
     )
     results = [HEADER_WHATS_NEW]
     messages_error = []
-    for a_tag in tqdm(a_tags):
+
+    def process_version_link(a_tag):
         version_link = urljoin(whats_new_url, a_tag["href"])
         try:
             soup = get_soup(session, version_link)
         except ConnectionError as error:
             messages_error.append(CHECK_URL.format(error=error))
-            continue
-        results.append(
-            (
-                version_link,
-                find_tag(soup, "h1").text,
-                find_tag(soup, "dl").text.replace("\n", ""),
-            )
+            return None
+        return (
+            version_link,
+            find_tag(soup, "h1").text,
+            find_tag(soup, "dl").text.replace("\n", ""),
         )
-    for message in messages_error:
-        logging.error(message)
+
+    results.extend(filter(None, (process_version_link(a_tag) for a_tag in tqdm(a_tags))))
+
+    list(map(logging.error, messages_error))
+
     return results
 
 
 def latest_versions(session):
     soup = get_soup(session, MAIN_DOC_URL)
     ul_tags = soup.select("div.sphinxsidebarwrapper ul")
+
     for ul in ul_tags:
         if "All versions" in ul.text:
             a_tags = ul.find_all("a")
             break
     else:
-        raise ValueError(NO_RESULTS)
+        raise ParserFindTagException(NO_RESULTS)
+
     results = [HEADER_LATEST_VERSION]
     pattern = r"Python (?P<version>\d\.\d+) \((?P<status>.*)\)"
+
     for a_tag in a_tags:
         text_match = re.search(pattern, a_tag.text)
         if text_match is None:
@@ -79,6 +85,7 @@ def latest_versions(session):
         else:
             version, status = text_match.groups()
         results.append((a_tag["href"], version, status))
+
     return results
 
 
@@ -108,17 +115,14 @@ def pep(session):
                     expected_status=EXPECTED_STATUS[abbreviation_status],
                 )
             )
-    for message in messages_error:
-        logging.error(message)
-    for message in messages:
-        logging.warning(message)
+    list(map(logging.error, messages_error))
+    list(map(logging.error, messages))
     counter = Counter(statuses)
-    results = [
-        HEADER_PEP,
+    return [
+        ('Статус', 'Количество'),
         *counter.items(),
+        ('Всего', sum(counter.values())),
     ]
-    results.append(("Итого:", len(statuses)))
-    return results
 
 
 def download(session):
