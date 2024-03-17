@@ -30,8 +30,8 @@ MESSAGE_ERRORS = 'Ошибка: {error}'
 PARSER_START = 'Парсер запущен!'
 PARSER_END = 'Парсер завершил работу!'
 NO_RESULTS = 'Ничего не нашлось'
-ERROR_PAGE = 'При загузке {url} возникла ошибка.' 
-ERROR_TAG = 'Тег {tag} {attrs} не найден.' 
+ERROR_PAGE = 'При загузке {url} возникла ошибка.'
+ERROR_TAG = 'Тег {tag} {attrs} не найден.'
 
 # Заголовки таблиц
 HEADER_WHATS_NEW = ('Ссылка на статью', 'Заголовок', 'Редактор, Автор')
