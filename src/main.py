@@ -70,7 +70,7 @@ def pep(session):
         link = a_tag['href']
         pep_url = urljoin(PEP_DOC_URL, link)
         soup = get_soup(session, pep_url)
-        if soup is None:
+        if not soup:
             message = CHECK_URL.format(url=pep_url)
             logging.exception(message, stack_info=True)
         abbr_tags = find_tag(soup, 'abbr')
@@ -104,12 +104,6 @@ def download(session):
     download_dir = BASE_DIR / 'downloads'
     download_dir.mkdir(exist_ok=True)
     archive_path = download_dir / filename
-    # Не могу изменить на контсанту тесты падают:
-    # FAILED tests/test_main.py::test_download -
-    # AssertionError: Убедитесь что для хранения архивов с
-    # документацией Python в директории `src` создаётся директория `downloads`
-    # DOWNLOAD_DIR.mkdir(exist_ok=True)
-    # archive_path = DOWNLOAD_DIR / filename
     with open('test.txt', 'w') as test_file:
         test_file.write('Hello World!')
 
@@ -117,6 +111,7 @@ def download(session):
         file.write(response.content)
     message = DOWNLOAD_RESULT.format(path=archive_path)
     logging.info(message)
+
 
 
 MODE_TO_FUNCTION = {
