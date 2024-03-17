@@ -1,34 +1,33 @@
 # Проект парсинга pep
 # Автор
-Автор: veuxveuxveux
+Автор: Комиссаров М.К. https://github.com/veuxveuxveux/
 
 # Техно-стек
 - Python 3.x
-- Библиотеки: requests, BeautifulSoup, logging
-- Формат данных: CSV
+- Библиотеки: requests, BeautifulSoup
 
 # Команды развертывания
 1. Установите необходимые библиотеки:
    
-   pip install requests beautifulsoup4
+   '''pip install -r requirements.txt'''
    
 2. Загрузите репозиторий:
    
-   git clone https://github.com/veuxveuxveux/parser.git
+   '''git clone https://github.com/veuxveuxveux/bs4_parser_pep.git'''
    
 3. Перейдите в каталог проекта:
    
-   cd parser
+   '''cd bs4_parser_pep'''
    
 
 # Команды запуска
 1. Запустите парсер для получения информации о последней версии Python:
    
-   python main.py whats_new
+   '''python main.py whats_new'''
    
 2. Запустите парсер для получения информации о PEP документах:
    
-   python main.py pep
+   '''python main.py pep'''
    
 
 # Доступ к справке
