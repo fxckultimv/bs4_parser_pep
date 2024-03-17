@@ -10,7 +10,7 @@ from constants import (
 )
 
 
-def control_output(results, cli_args): 
+def control_output(results, cli_args):
     output = cli_args.output
     output_functions = {
         'pretty': pretty_output,

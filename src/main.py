@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 from configs import configure_argument_parser, configure_logging
 
+
 from constants import (
     BASE_DIR,
     MAIN_DOC_URL,
@@ -24,7 +25,6 @@ from constants import (
     PARSER_START,
     NO_RESULTS,
     HEADER_WHATS_NEW,
-    HEADER_PEP,
     HEADER_LATEST_VERSION,
     PAGE_NAME_DOWNLOAD,
     DOWNLOAD_DIR,
@@ -57,7 +57,9 @@ def whats_new(session):
             find_tag(soup, "dl").text.replace("\n", ""),
         )
 
-    results.extend(filter(None, (process_version_link(a_tag) for a_tag in tqdm(a_tags))))
+    results.extend(filter(None, (
+        process_version_link(a_tag) for a_tag in tqdm(a_tags)
+    )))
 
     list(map(logging.error, messages_error))
 
