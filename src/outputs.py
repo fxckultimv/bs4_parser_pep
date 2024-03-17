@@ -17,15 +17,15 @@ def control_output(results, cli_args):
         OUTPUT_FILE: file_output,
         OUTPUT_DEFAULT: default_output
     }
-    output_functions.get(cli_args.output)(results, cli_args)
+    output_functions[cli_args.output](results, cli_args)
 
 
-def default_output(results):
+def default_output(results, cli_args=''):
     for row in results:
         print(*row)
 
 
-def pretty_output(results):
+def pretty_output(results, cli_args=''):
     table = PrettyTable()
     table.field_names = results[0]
     table.align = 'l'
