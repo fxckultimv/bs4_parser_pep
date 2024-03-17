@@ -5,16 +5,13 @@ LOG_DIR = BASE_DIR / 'logs'
 LOG_FILE = LOG_DIR / 'parser.log'
 DOWNLOAD_DIR = BASE_DIR / 'downloads'
 RESULTS_DIR = BASE_DIR / 'results'
-
+OUTPUT_PRETTY = 'pretty'
+OUTPUT_FILE = 'file'
+DEFAULT_OUTPUT = None
 CHECK_URL = 'При загрузке {url} возникла ошибка!'
 DOWNLOAD_RESULT = 'Архив был сохранён тут: {path}'
 CMD_ARGS = 'Аргументы для команды: {args}'
 MESSAGE_ERRORS = 'Ошибка: {error}'
-
-OUTPUT_PRETTY = 'pretty'
-OUTPUT_FILE = 'file'
-DEFAULT_OUTPUT = None
-
 CODE_PAGES = 'utf-8'
 DATETIME_FORMAT = '%Y-%m-%d_%H-%M-%S'
 LOG_FORMAT = '"%(asctime)s - [%(levelname)s] - %(message)s"'
