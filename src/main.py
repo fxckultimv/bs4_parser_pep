@@ -44,7 +44,7 @@ def whats_new(session):
     results = [HEADER_WHATS_NEW]
     messages_error = []
 
-    for a_tag in tqdm(a_tags): 
+    for a_tag in tqdm(a_tags):
         version_link = urljoin(whats_new_url, a_tag["href"])
         try:
             soup = get_soup(session, version_link)
