@@ -63,3 +63,9 @@ ERROR_PEP_STATUS = (
     '\nОжидаемые статусы:'
     '\n{expected_status}'
 )
+
+# Режимы работы парсера
+output_functions = {
+        'pretty': pretty_output,
+        'file': file_output,
+    }
