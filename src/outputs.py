@@ -17,7 +17,7 @@ def control_output(results, cli_args):
         OUTPUT_FILE: file_output,
         OUTPUT_DEFAULT: default_output
     }
-    output_functions[cli_args.output](results, cli_args)
+    output_functions.get(cli_args.output)(results, cli_args)
 
 
 def default_output(results):
