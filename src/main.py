@@ -113,7 +113,6 @@ def download(session):
     logging.info(message)
 
 
-
 MODE_TO_FUNCTION = {
     'whats-new': whats_new,
     'latest-versions': latest_versions,
