@@ -7,14 +7,13 @@
 - Библиотеки: requests, BeautifulSoup
 
 # Команды развертывания
-1. Установите необходимые библиотеки:
-   
-   ```pip install -r requirements.txt```
-   
-2. Загрузите репозиторий:
+
+1. Загрузите репозиторий:
    
    ```git clone https://github.com/veuxveuxveux/bs4_parser_pep.git```
+2. Установите необходимые библиотеки:
    
+   ```pip install -r requirements.txt```
 3. Перейдите в каталог проекта:
    
    ```cd bs4_parser_pep```
