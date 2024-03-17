@@ -16,7 +16,6 @@ def control_output(results, cli_args):
         'pretty': pretty_output,
         'file': file_output,
     }
-
     output_function = output_functions.get(output, default_output)
     output_function(results, cli_args)
 
