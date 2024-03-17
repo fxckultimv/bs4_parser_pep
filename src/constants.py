@@ -6,6 +6,11 @@ LOG_FILE = LOG_DIR / 'parser.log'
 DOWNLOAD_DIR = BASE_DIR / 'downloads'
 RESULTS_DIR = BASE_DIR / 'results'
 
+CHECK_URL = 'При загрузке {url} возникла ошибка!'
+DOWNLOAD_RESULT = 'Архив был сохранён тут: {path}'
+CMD_ARGS = 'Аргументы для команды: {args}'
+MESSAGE_ERRORS = 'Ошибка: {error}'
+
 OUTPUT_PRETTY = 'pretty'
 OUTPUT_FILE = 'file'
 DEFAULT_OUTPUT = None
@@ -28,3 +33,13 @@ EXPECTED_STATUS = {
     'W': ('Withdrawn',),
     '': ('Draft', 'Active'),
 }
+
+ERROR_PEP_STATUS = (
+    '\nСтатусы не совпадают:'
+    '\n{pep_url}'
+    '\nСтатус в ответе:'
+    '\n{status}'
+    '\nОжидаемые статусы:'
+    '\n{expected_status}'
+)
+

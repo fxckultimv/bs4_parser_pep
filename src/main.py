@@ -8,25 +8,12 @@ from tqdm import tqdm
 
 from configs import configure_argument_parser, configure_logging
 from constants import (
-    BASE_DIR, MAIN_DOC_URL, PEP_DOC_URL, EXPECTED_STATUS
+    BASE_DIR, MAIN_DOC_URL, PEP_DOC_URL, EXPECTED_STATUS,
+    CHECK_URL, CMD_ARGS, DOWNLOAD_RESULT, MESSAGE_ERRORS,
+    ERROR_PEP_STATUS
 )
 from outputs import control_output
 from utils import get_response, find_tag, get_soup
-
-ERROR_PEP_STATUS = (
-    '\nНесовпадающие статусы:'
-    '\n{pep_url}'
-    '\nСтатус в карточке:'
-    '\n{status}'
-    '\nОжидаемые статусы:'
-    '\n{expected_status}'
-)
-
-CHECK_URL = 'Возникла ошибка при загрузке страницы {url}'
-DOWNLOAD_RESULT = 'Архив был загружен и сохранён: {path}'
-CMD_ARGS = 'Аргументы командной строки: {args}'
-
-MESSAGE_ERRORS = 'Произошел сбой: {error}'
 
 
 def whats_new(session):
